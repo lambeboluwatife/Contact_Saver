@@ -1,0 +1,78 @@
+<%- include ('../partials/header') %>
+    <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Save Contact</h1>
+        <%- include ('../partials/messages') %>
+        <form action="/contacts" method="POST">
+
+          <div class="form-group">
+            <label for="name">Enter Contact Name</label>
+            <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Eg: John Doe"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Contact Address</label>
+            <input
+            type="text"
+            id="address"
+            name="address"
+            class="form-control"
+            placeholder="Eg: New York City"
+            value="<%= typeof address != 'undefined' ? address : '' %>"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Contact Phone Number</label>
+            <input
+            type="text"
+            id="tel"
+            name="tel"
+            class="form-control"
+            placeholder="Eg: +2348127430183"
+            value="<%= typeof tel != 'undefined' ? tel : '' %>"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="contactType">Contact Type</label>
+            <select class="form-control" name="contactType" required>
+              <option selected disabled>Contact Type</option>
+              <option value="home">Home</option>
+              <option value="office">Office</option>
+              <option value="business">Business</option>
+              <option value="company">Company</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Contact Email</label>
+            <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Eg: johndoe@gmail.com"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Save</button>
+        </form>
+        <a href="/contacts">Go Back!</a>
+      </div>
+    </div>
+
+    <hr>
+
+    </div>
+
+<%- include ('../partials/footer') %>
