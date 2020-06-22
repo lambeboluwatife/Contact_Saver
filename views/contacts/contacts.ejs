@@ -1,0 +1,64 @@
+<%- include ('../partials/header') %>
+  <div class="container">
+
+    <h5>Hello <%= username %></h5>
+    <% if (contacts == "") { %>
+        <h4>You have no contact saved.</h4>
+    <% } else { %>
+      <div class="row text-center" style="display: flex; flex-wrap; wrap;">
+        <% contacts.forEach((contact) => { %>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+              <img style="height: 100%; width: 100%;" src="https://tse3.mm.bing.net/th?id=OIP.1kL3g4sW0ykn-D22BCYDPAHaHa&pid=Api&P=0&w=300&h=300" alt="User Icon">
+              <div class="caption">
+                <h4><%= contact.name %></h4>
+              </div>
+            </div>
+
+            <p>
+              <div class="btn btn-primary" id="myBtn">
+                More...
+              </div>
+            </p>
+
+              <!-- The Modal -->
+              <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3><%= contact.name %></h3>
+                    <span class="close">×</span>
+
+                  </div>
+                  <div class="modal-body">
+                    <h5><%= contact.tel %></h5>
+                    <h5><%= contact.contactType %></h5>
+                    <h5><%= contact.email %></h5>
+                    <h5><%= contact.address %></h5>
+                  </div>
+                  <div class="modal-footer">
+                    <!-- Edit and Delete -->
+                    <a class="btn btn-xs btn-warning" href="/contacts/<%= contact._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/contacts/<%= contact._id %>?_method=DELETE" method="POST">
+                          <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                  </div>
+                </div>
+
+
+              </div>
+
+          </div>
+
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="">
+        <a class="btn btn-primary btn-large" href="/contacts/new">Save new contact</a>
+    </div>
+  </div>
+
+
+<%- include ('../partials/footer') %>
